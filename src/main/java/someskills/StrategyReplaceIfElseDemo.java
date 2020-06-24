@@ -10,13 +10,15 @@ import javax.annotation.PostConstruct;
 
 /**
  * @description: 策略模式代替if else
+ * 参考网址：https://mp.weixin.qq.com/s/hkypvNBkRjPM6HM51_jW9g
+ *
  * @author: movesan
  * @create: 2020-06-24 14:29
  **/
 public class StrategyReplaceIfElseDemo {
 
     /**
-     * 传统的 if else 解决方法
+     * ----------------- 传统的 if else 解决方法 -----------------
      * 当每个业务逻辑有 3 4 行时，用传统的策略模式不值得，直接的if else又显得不易读
      */
     public String getCheckResult(String order) {
@@ -43,6 +45,7 @@ public class StrategyReplaceIfElseDemo {
     }
 
     /**
+     * ----------------- map 函数式接口方式 -----------------
      * 业务逻辑分派Map
      * Function为函数式接口，下面代码中 Function<String, String> 的含义是接收一个Stirng类型的变量，返回一个String类型的结果
      */
@@ -74,11 +77,16 @@ public class StrategyReplaceIfElseDemo {
         return "不在处理的逻辑中返回业务错误";
     }
 
+    /**
+     * ----------------- 扩展 -----------------
+     */
     // Map 中的 value 也可以改为自定义的函数式接口，如下
     @FunctionalInterface
     private interface SomethingHandler {
         void process(String param);
     }
+    private Map<String, SomethingHandler> someHandlerMap = new HashMap<>();
+
 
     // 如要执行多个处理逻辑，value 可为函数式接口 list
     private Map<String, List<SomethingHandler>> handlerMap = new HashMap<>();
