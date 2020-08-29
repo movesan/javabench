@@ -67,7 +67,7 @@ public class SomeQuizzes {
     }
 
     public static void main(String[] args) {
-        deadLoopTest();
+//        deadLoopTest();
 //        deadLockTest();
     }
 }
