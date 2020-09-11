@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * @author: movesan
  * @create: 2020-05-06 15:23
  **/
-public class SomeQuizzes {
+public class SomeProblemQuizzes {
 
     private static void deadLoopTest() {
         System.out.println("请求cpu死循环");
@@ -20,10 +20,11 @@ public class SomeQuizzes {
         int num = 0;
         while (true) {
             num++;
+            System.out.println(num);
             if (num == Integer.MAX_VALUE) {
                 System.out.println("reset");
             }
-            num = 0;
+//            num = 0;
         }
     }
 
@@ -66,8 +67,25 @@ public class SomeQuizzes {
         }
     }
 
+    /**
+     * 模拟内存泄漏
+     */
+    public static void leakTest() {
+        int i = 0;
+        while (i < 500) {
+//            System.out.println("模拟内存泄漏");
+            ThreadLocal<Byte[]> localVariable = new ThreadLocal<Byte[]>();
+            localVariable.set(new Byte[4096 * 1024]);// 为线程添加变量
+            i++;
+        }
+        while (true) {
+
+        }
+    }
+
+
     public static void main(String[] args) {
 //        deadLoopTest();
-//        deadLockTest();
+        deadLockTest();
     }
 }

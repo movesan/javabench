@@ -1,6 +1,12 @@
 package algorithm.sorting.quick;
 
+import com.google.common.base.Stopwatch;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+import org.springframework.util.StopWatch;
 
 import static algorithm.sorting.utils.SortingHelper.exch;
 import static algorithm.sorting.utils.SortingHelper.less;
@@ -76,8 +82,18 @@ public class QuickQuizzes {
     }
 
     public static void main(String[] args) {
-        Integer[] arr = {3, 5, 7, 4, 2, 1, 5, 4, 9, 8, 10};
+//        Integer[] arr = {3, 5, 7, 4, 2, 1, 5, 4, 9, 8, 10};
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 10000000; i++) {
+            Random random = new Random();
+            list.add(random.nextInt(10000));
+        }
+        Integer[] arr = list.toArray(new Integer[0]);
+        Stopwatch stopwatch = Stopwatch.createStarted();
         QuickQuizzes.sort(arr);
-        show(arr);
+        stopwatch.stop();
+        System.out.printf("执行时长：%d 毫秒. %n", stopwatch.elapsed(TimeUnit.MILLISECONDS));
+        System.out.println(Arrays.toString(arr));
+//        show(arr);
     }
 }
