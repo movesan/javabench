@@ -15,7 +15,32 @@ public class TreeNode {
         val = x;
     }
 
+    public static TreeNode getTree() {
+        /*
+                     5
+                   /   \
+                  3     8
+                /  \   /  \
+               2    4 6    9
+              /           / \
+             1           7   10
+         */
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(8);
 
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
+        root.left.left.left = new TreeNode(1);
+//        root.right.right.right
+
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(9);
+        root.right.right.left = new TreeNode(7);
+        root.right.right.right = new TreeNode(10);
+
+        return root;
+    }
 
     @Override
     public String toString() {
