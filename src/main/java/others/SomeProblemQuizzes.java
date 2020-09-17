@@ -1,6 +1,7 @@
 package others;
 
 import java.util.Random;
+import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -13,6 +14,8 @@ import java.util.concurrent.TimeUnit;
  * @create: 2020-05-06 15:23
  **/
 public class SomeProblemQuizzes {
+
+    static Vector v = new Vector(10);
 
     private static void deadLoopTest() {
         System.out.println("请求cpu死循环");
@@ -69,6 +72,9 @@ public class SomeProblemQuizzes {
 
     /**
      * 模拟内存泄漏
+     * 问题原因：
+     *        由于 ThreadLocalMap 的key 维护的是弱引用，所以会在gc 时回收，但是 value 却不会释放，导致内存泄漏
+     *        （threadLocal已做优化，在 set，get，remove 时进行了对 key=null 的删除）
      */
     public static void leakTest() {
         int i = 0;
@@ -78,11 +84,22 @@ public class SomeProblemQuizzes {
             localVariable.set(new Byte[4096 * 1024]);// 为线程添加变量
             i++;
         }
+        // 为了避免让进程停止，观察内存情况
         while (true) {
 
         }
     }
 
+    /**
+     * 这些静态变量的生命周期和应用程序一致，他们所引用的所有的对象Object也不能被释放，因为他们也将一直被Vector等引用着。
+     */
+    public static void heapLeakTest() {
+        for (int i = 1; i<100; i++){
+            Object o = new Object();
+            v.add(o);
+            o = null;
+        }
+    }
 
     public static void main(String[] args) {
 //        deadLoopTest();

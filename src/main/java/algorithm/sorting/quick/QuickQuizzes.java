@@ -31,7 +31,7 @@ public class QuickQuizzes {
      */
     private static void sort(Comparable[] arr, int lo, int hi) {
         if (hi <= lo) return;
-        int p = partitionRight(arr, lo, hi);
+        int p = partitionLeft(arr, lo, hi);
         // 递归左区间
         sort(arr, lo, p - 1);
         // 递归右区间
@@ -50,7 +50,7 @@ public class QuickQuizzes {
         int i = lo;
         for (int j = lo+1; j <= hi; j++) {
             if (less(arr[j], v)) {
-                // 优化点，如果 i==j，可以不进行交互操作
+                // 优化点，如果 i==j，可以不进行交换操作
                 exch(arr, i+1, j);
                 i++;
             }
