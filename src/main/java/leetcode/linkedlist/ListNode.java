@@ -7,22 +7,22 @@ package leetcode.linkedlist;
  **/
 public class ListNode {
 
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode() {
+    public ListNode() {
     }
 
-    ListNode(int val) {
+    public ListNode(int val) {
         this.val = val;
     }
 
-    ListNode(int val, ListNode next) {
+    public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
     }
 
-    ListNode(int[] arr) {
+    public ListNode(int[] arr) {
         assert (arr != null && arr.length != 0) : "参数为空";
         this.val = arr[0];
         ListNode tmp = this;

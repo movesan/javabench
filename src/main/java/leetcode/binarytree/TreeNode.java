@@ -7,11 +7,11 @@ package leetcode.binarytree;
  **/
 public class TreeNode {
 
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
     }
 
@@ -19,15 +19,15 @@ public class TreeNode {
         /*
                      5
                    /   \
-                  3     8
+                  3     7
                 /  \   /  \
                2    4 6    9
               /           / \
-             1           7   10
+             1           8   10
          */
         TreeNode root = new TreeNode(5);
         root.left = new TreeNode(3);
-        root.right = new TreeNode(8);
+        root.right = new TreeNode(7);
 
         root.left.left = new TreeNode(2);
         root.left.right = new TreeNode(4);
@@ -36,7 +36,7 @@ public class TreeNode {
 
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(9);
-        root.right.right.left = new TreeNode(7);
+        root.right.right.left = new TreeNode(8);
         root.right.right.right = new TreeNode(10);
 
         return root;

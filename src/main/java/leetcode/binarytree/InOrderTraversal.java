@@ -33,7 +33,7 @@ public class InOrderTraversal {
             }
             cur = stack.pop();
             list.add(cur.val);
-            cur = cur.right;
+            cur = cur.right; // 第一次取的是叶子节点，所以不会有右节点，后面会有右节点
         }
         return list;
     }

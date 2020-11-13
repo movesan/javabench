@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.Test;
@@ -41,6 +42,13 @@ public class MultiThreadTestDemo {
 
     /**
      * 借助 future 可以实现捕获子线程中的异常，并且发生异常后主线程可终止
+     *
+     * 之所以 future 可以捕获异常，是因为在执行 submit 的时候，其实是通过传进去的 callable 构造了 FutureTask，
+     * callable 作为 futureTask 中的属性，执行 futureTask 的 run 方法时是调用了 callable 的 call 方法，此方法支持返回值和抛出异常；
+     * 而在 futureTask 的 run 方法中会保存返回结果或者异常信息，如果最后调用 get 方法时，
+     *      状态为正常状态：返回结果
+     *      状态为非正常状态：new ExecutionException((Throwable)x)，x 即为之前保存的异常信息
+     * @see FutureTask#report(int)
      */
     @Test
     public void futureTest() {

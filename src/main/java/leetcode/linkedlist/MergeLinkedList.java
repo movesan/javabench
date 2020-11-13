@@ -1,6 +1,5 @@
 package leetcode.linkedlist;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import org.junit.Test;

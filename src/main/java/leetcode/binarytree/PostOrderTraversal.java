@@ -16,6 +16,11 @@ import static leetcode.binarytree.TreeNode.getTree;
  **/
 public class PostOrderTraversal {
 
+    /**
+     * 迭代遍历
+     * @param root
+     * @return
+     */
     public List<Integer> iterationTraversal(TreeNode root) {
         LinkedList<Integer> list = new LinkedList<>();
         if (root == null) return list;
@@ -48,9 +53,9 @@ public class PostOrderTraversal {
 
     private void recursion(TreeNode root, List<Integer> res) {
         if (root == null) return;
-        res.add(root.val);
         recursion(root.left, res);
         recursion(root.right, res);
+        res.add(root.val);
     }
 
     @Test

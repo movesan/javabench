@@ -36,6 +36,7 @@ public class SlidingWindowTest {
             @Override
             public void commitWork(WindowTask windowTask) {
                 System.out.println("任务：" + windowTask.getTaskNo() + " 处理完成，准备提交");
+                // 也可以提交到队列中，开启一个提交线程统一提交
                 taskDoneList.add(windowTask.getTaskNo());
             }
         });

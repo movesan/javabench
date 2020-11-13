@@ -15,6 +15,11 @@ import static leetcode.binarytree.TreeNode.getTree;
  **/
 public class PreOrderTraversal {
 
+    /**
+     * 迭代遍历
+     * @param root
+     * @return
+     */
     public List<Integer> iterationTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if (root == null) return list;

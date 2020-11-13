@@ -103,7 +103,7 @@ public class SortLinkedList {
         ListNode right = sortListMergeRecursion(tmp);
 
         // 3.合并:合并两个有序链表
-        ListNode dummy = new ListNode(0);
+        ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         while (left != null && right != null) {
             if (left.val <= right.val) {
@@ -129,8 +129,6 @@ public class SortLinkedList {
     public ListNode sortListQuick(ListNode head) {
         return quickSort(head, null);
     }
-
-    ;
 
     // sort[lo..hi), hi is exclusive
     private ListNode quickSort(ListNode lo, ListNode hi) {

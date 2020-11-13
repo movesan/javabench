@@ -30,6 +30,7 @@ public class CycleLinkedList {
         if (meetNode == null) {
             return null;
         } else {
+            // 头节点与相遇节点再遇到时走过的路程相同
             ListNode part1 = meetNode;
             ListNode part2 = head;
             while (part1 != part2) {
@@ -50,7 +51,7 @@ public class CycleLinkedList {
         ListNode node6 = new ListNode(6);
 
         node1.next(node2).next(node3).next(node4).next(node5).next(node6)
-                .next(node3);
+                .next(node3); // node3为入环节点
         System.out.println(detectCycleNode(node1).val);
     }
 }

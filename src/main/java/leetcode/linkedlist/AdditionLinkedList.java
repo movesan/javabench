@@ -35,6 +35,7 @@ public class AdditionLinkedList {
             cur.next = new ListNode(sum);
             cur = cur.next;
         }
+
         if (left != null) {
             cur.next = left;
         }
