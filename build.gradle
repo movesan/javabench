@@ -30,4 +30,8 @@ dependencies {
     compile group: 'org.squirrelframework', name: 'squirrel-foundation', version: '0.3.8'
 
 
+    // https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-java
+    compile group: 'org.apache.flink', name: 'flink-streaming-java_2.12', version: '1.12.0'
+
+
 }
